@@ -153,6 +153,8 @@ return [
             'exh_register_helper' => ' ',
             'exh_name'            => 'Exhibition Name',
             'exh_name_helper'     => ' ',
+            'exh_venue'            => 'Exhibition Venue',
+            'exh_venue_helper'     => ' ',
             'exh_adr_1'           => 'Address Line 1',
             'exh_adr_1_helper'    => ' ',
             'exh_adr_2'           => 'Address Line 2',

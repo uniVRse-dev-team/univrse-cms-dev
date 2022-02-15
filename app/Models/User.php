@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use \DateTimeInterface;
-use App\Notifications\VerifyUserNotification;
 use Carbon\Carbon;
 use Hash;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -13,7 +12,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable
 {
@@ -45,6 +43,9 @@ class User extends Authenticatable
         'verified_at',
         'verification_token',
         'remember_token',
+        'country',
+        'occupation',
+        'age',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -75,7 +76,7 @@ class User extends Authenticatable
                     $user->roles()->attach($registrationRole);
                 }
 
-                $user->notify(new VerifyUserNotification($user));
+                return view('home');
             }
         });
     }

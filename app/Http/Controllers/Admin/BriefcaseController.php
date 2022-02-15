@@ -19,12 +19,19 @@ class BriefcaseController extends Controller
         return view('admin.briefcase.index',['media'=>$media]);      
     }
 
+    public function massDestroy(Request $request)
+    {
+        Media::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
+
     public function viewFile($id) {
         $select = "SELECT * FROM media WHERE id=".$id;
         $media = DB::select($select);
 
         foreach($media as $md)
-        $files = $md->id . "/" . $md->file_name;
+        $files = $md->file_name;
 
         return view('admin.briefcase.viewfile', ['files' => $files]);
     }
@@ -34,7 +41,7 @@ class BriefcaseController extends Controller
         $media = DB::select($select);
 
         foreach($media as $md)
-        $files = $md->id . "/" . $md->file_name;
+        $files = $md->file_name;
 
         return view('admin.briefcase.viewpdffile', ['files' => $files]);
     }
@@ -43,7 +50,7 @@ class BriefcaseController extends Controller
 
         $media = Media::find($id);
 
-        $url = 'Storage/' . $media->id . '/' . $media->file_name;
+        $url = 'media/' . $media->file_name;
         $pathtoFile = public_path($url);
         return response()->download($pathtoFile);
     }

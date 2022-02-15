@@ -33,6 +33,7 @@ class Exhibitor extends Model implements HasMedia
     protected $fillable = [
         'exh_register',
         'exh_name',
+        'exh_venue',
         'exh_adr_1',
         'exh_adr_2',
         'exh_postcode',
@@ -45,8 +46,8 @@ class Exhibitor extends Model implements HasMedia
         'exh_office',
         'exh_mobile',
         'exh_template',
-        'exh_color1',
-        'exh_color2',
+        'exh_bcolor1',
+        'exh_bcolor2',
         'created_at',
         'updated_at',
         'deleted_at',

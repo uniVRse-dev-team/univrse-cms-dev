@@ -78,11 +78,11 @@ class ExhibitorController extends Controller
             $table->editColumn('exh_mobile', function ($row) {
                 return $row->exh_mobile ? $row->exh_mobile : '';
             });
-            $table->editColumn('exh_color1', function ($row) {
-                return $row->exh_color1 ? $row->exh_color1 : '';
+            $table->editColumn('exh_bcolor1', function ($row) {
+                return $row->exh_bcolor1 ? $row->exh_bcolor1 : '';
             });
-            $table->editColumn('exh_color2', function ($row) {
-                return $row->exh_color2 ? $row->exh_color2 : '';
+            $table->editColumn('exh_bcolor2', function ($row) {
+                return $row->exh_bcolor2 ? $row->exh_bcolor2 : '';
             });
             $table->editColumn('exh_logo', function ($row) {
                 return $row->exh_logo ? '<a href="' . $row->exh_logo->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
@@ -223,26 +223,35 @@ class ExhibitorController extends Controller
             }
 
             if($request->hasFile('exh_poster')){
-                $request->file('exh_poster')->storeAs($mCount, $request->file('exh_poster')->getClientOriginalName());
+
+
+                // Save info to db
                 $media = new Media();
                 $media->model_type = "App\Models\Exhibitor";
                 $media->model_id = $request->input('model_id');
                 $media->collection_name = "exh_poster";
                 $media->name = $postername;
-                $media->file_name = $request->file('exh_poster')->getClientOriginalName();
-                    $ext = pathinfo($request->file('exh_poster')->getClientOriginalName(), PATHINFO_EXTENSION);
+                $media->file_name = $poster->getClientOriginalName();
+                    $ext = pathinfo($poster->getClientOriginalName(), PATHINFO_EXTENSION);
                 $media->mime_type = "image/" . $ext;
                 $media->disk = "public";
-                $media->size = $request->file('exh_poster')->getSize();
+                $media->size = $poster->getSize();
                 $media->manipulations = "[]";
                 $media->custom_properties = "[]";
                 $media->responsive_images = "[]";
                 $media->order_column = "1";
                 $media->save();
+
+                 // Save file to media folder
+                 $poster = $request->file('exh_poster');
+                 $path = public_path('/media');
+                 $poster->move($path, $poster->getClientOriginalName());
+
                 }
 
             if($request->hasFile('exh_article')){
-            $request->file('exh_article')->storeAs($mCount, $request->file('exh_article')->getClientOriginalName());
+
+            // Save info to db
             $media = new Media();
             $media->model_type = "App\Models\Exhibitor";
             $media->model_id = $request->input('model_id');
@@ -257,10 +266,17 @@ class ExhibitorController extends Controller
             $media->responsive_images = "[]";
             $media->order_column = "1";
             $media->save();
+
+            // Save file to media folder
+            $article = $request->file('exh_article');
+            $path = public_path('/media');
+            $article->move($path, $article->getClientOriginalName());
+
             }
 
             if($request->hasFile('exh_brochure')){
-                $request->file('exh_brochure')->storeAs($mCount, $request->file('exh_brochure')->getClientOriginalName());
+
+                // Save info to db
                 $media = new Media();
                 $media->model_type = "App\Models\Exhibitor";
                 $media->model_id = $request->input('model_id');
@@ -275,6 +291,12 @@ class ExhibitorController extends Controller
                 $media->responsive_images = "[]";
                 $media->order_column = "1";
                 $media->save();
+
+                // Save file to media folder
+                $brochure = $request->file('exh_brochure');
+                $path = public_path('/media');
+                $brochure->move($path, $brochure->getClientOriginalName());
+                                
                 }
     
             return redirect()->back();

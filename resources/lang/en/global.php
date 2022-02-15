@@ -19,6 +19,7 @@ return [
     'forgot_password'                => 'Forgot your password?',
     'home'                           => 'Home',
     'list'                           => 'List',
+    'listing'                        => 'Listing',
     'login'                          => 'Login',
     'login_email'                    => 'Email',
     'login_password'                 => 'Password',

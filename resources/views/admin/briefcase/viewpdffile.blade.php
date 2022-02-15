@@ -11,7 +11,7 @@
 
                 <div class="card-body">
                 <div class="card-text">
-                    <iframe width="100%" height="600px" src="{{ asset('storage/'. $files) }}"> 
+                    <iframe width="100%" height="600px" src="/media/<?php echo $files;?>"> 
                 </div>
                 </div>
             </div>

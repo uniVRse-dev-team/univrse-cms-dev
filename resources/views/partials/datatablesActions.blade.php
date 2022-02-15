@@ -1,17 +1,19 @@
+<div style="display: flex;">
 @can($viewGate)
-    <a class="btn btn-xs btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
-        {{ trans('global.view') }}
+    <a style="margin-right:10px;" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
+        <img width=25 height=25 src="{{ url('/icon/viewfile.png') }}">
     </a>
 @endcan
 @can($editGate)
-    <a class="btn btn-xs btn-info" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
-        {{ trans('global.edit') }}
+    <a style="margin-right:10px;" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
+        <img width=25 height=25 src="{{ url('/icon/edit.png') }}">
     </a>
 @endcan
 @can($deleteGate)
     <form action="{{ route('admin.' . $crudRoutePart . '.destroy', $row->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
         <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+        <input type="image" style="margin-right:10px;" width=25 height=25 src="{{ url('/icon/delete.png') }}" value="{{ trans('global.delete') }}">
     </form>
 @endcan
+</div>

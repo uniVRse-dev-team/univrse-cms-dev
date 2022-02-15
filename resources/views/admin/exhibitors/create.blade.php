@@ -170,10 +170,10 @@
                 <span class="help-block">{{ trans('cruds.exhibitor.fields.exh_logo_helper') }}</span>
             </div>
             <div class="form-group">
-            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.exhibitors.index') }}"> Return </a>
                 <button class="btn btn-info" style="padding:6px 15px;" type="submit">
                     {{ trans('global.save') }}
                 </button>
+                <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.exhibitors.index') }}"> Return </a>
             </div>
         </form>
     </div>

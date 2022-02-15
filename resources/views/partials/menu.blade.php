@@ -1,8 +1,14 @@
 <style>
     * {
     font-weight: 600;
-    color: black;
     }
+
+
+    /*
+    .c-sidebar-nav-item:hover {
+        background-color: purple;
+    }
+    */
 
 </style>
 
@@ -36,49 +42,39 @@
         @can('user_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
-
-                    </i>
-                    Users
+                    <img width=30 height=30 src="{{ url('/icon/outline_groups_white_48dp.png') }}">
+                    &nbsp; User Management
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
+                <ul class="c-sidebar-nav-dropdown-items">                   
+                    @can('user_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
+                                <img width=30 height=30 src="{{ url('/icon/outline_list_alt_white_48dp.png') }}">
+                                &nbsp; {{ trans('cruds.user.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('permission_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.permissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-unlock-alt c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.permission.title') }}
+                                <img width=30 height=30 src="{{ url('/icon/outline_list_alt_white_48dp.png') }}">
+                                &nbsp; {{ trans('cruds.permission.title') }}
                             </a>
                         </li>
                     @endcan
                     @can('role_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.roles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.role.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('user_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.user.title') }}
+                                <img width=30 height=30 src="{{ url('/icon/outline_list_alt_white_48dp.png') }}">
+                                &nbsp; {{ trans('cruds.role.title') }}
                             </a>
                         </li>
                     @endcan
                     @can('audit_log_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.audit-logs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/audit-logs") || request()->is("admin/audit-logs/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.auditLog.title') }}
+                                <img width=30 height=30 src="{{ url('/icon/outline_list_alt_white_48dp.png') }}">
+                                &nbsp; {{ trans('cruds.auditLog.title') }}
                             </a>
                         </li>
                     @endcan
@@ -93,24 +89,12 @@
                     {{ trans('cruds.organizer.title')}}
                 </a>
             </li>
-        @can('organizer_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.organizers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/organizers") || request()->is("admin/organizers/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-bar-chart c-sidebar-nav-icon">
-
-                    </i>
-                    Analytic
-                </a>
-            </li>
-        @endcan
         @can('sponsor_access')
         
                 <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
-                <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
-
-                </i>
-                {{ trans('global.systemCalendar') }}
+                <img width=30 height=30 src="{{ url('/icon/outline_event_white_24dp.png') }}">
+                    &nbsp; {{ trans('global.systemCalendar') }}
             </a>
         </li>
             <li class="c-sidebar-nav-item">
@@ -125,23 +109,29 @@
         @can('exhibitor_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.exhibitors.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/exhibitors") || request()->is("admin/exhibitors/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-home c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.exhibitor.title') }}
+                    <img width=30 height=30 src="{{ url('/icon/outline_storefront_white_48dp.png') }}">
+                    &nbsp; {{ trans('cruds.exhibitor.title') }}
                 </a>
             </li>
         @endcan
         @can('briefcase_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.briefcase.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/briefcase") || request()->is("admin/briefcase/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-picture-o c-sidebar-nav-icon">
 
                     </i>
-                    Briefcase
+                    Media
                 </a>
             </li>
         @endcan
+        
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.userbriefcase.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/userbriefcase") || request()->is("admin/userbriefcase/*") ? "c-active" : "" }}">
+                   <img width=30 height=30 src="{{ url('/icon/outline_business_center_white_48dp.png') }}">
+                    &nbsp; Briefcase
+                </a>
+            </li>
+
         @can('delegate_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.delegates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/delegates") || request()->is("admin/delegates/*") ? "c-active" : "" }}">
@@ -174,27 +164,11 @@
             @endcan
         @endif
         <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="">
-                        <i class="fa-fw fas fa-question-circle c-sidebar-nav-icon">
-                        </i>
-                        Help Center
+                    <a href="#" class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="">
+                        <img width=30 height=30 src="{{ url('/icon/outline_live_help_white_48dp.png') }}">
+                        &nbsp; Help Center
                     </a>
                 </li>
-        <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="">
-                        <i class="fa-fw fas fa-cog c-sidebar-nav-icon">
-                        </i>
-                        Settings
-                    </a>
-                </li>
-        <li class="c-sidebar-nav-item">
-            <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
-
-                </i>
-                {{ trans('global.logout') }}
-            </a>
-        </li>
 
     </ul>
 

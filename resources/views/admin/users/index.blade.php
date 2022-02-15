@@ -1,23 +1,49 @@
 @extends('layouts.admin')
 @section('content')
 @can('user_create')
+<style>
+    .btn {
+        color: white;
+    }
+
+    .p_button {
+        background: linear-gradient(0deg, rgba(92,15,121,1) 0%, rgba(192,94,233,1) 100%);
+        color: white;
+    }
+
+    .p_button:hover {
+        background-color: purple;
+    }
+
+.page-link {
+    background-color: #F5F5F5;
+    border: 1px solid black;
+    border-radius: 5%;
+    color: black !important;
+}
+
+.page-link:hover {
+    background-color: purple;
+    color: white !important;
+}
+    
+</style>
+
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.users.create') }}">
+            <a class="btn p_button" href="{{ route('admin.users.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
-    <div class="card-header">
-        <b>{{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}</b>
-    </div>
 
     <div class="card-body">
+    <h4 style="margin-bottom:20px;">{{ trans('cruds.user.title_singular') }} {{ trans('global.listing') }}</h4> 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover datatable datatable-User">
-                <thead>
+            <table class="table table-hover table-bordered datatable datatable-User">
+                <thead style="background: linear-gradient(0deg, rgba(92,15,121,1) 0%, rgba(192,94,233,1) 100%); color: white;" >
                     <tr>
                         <th width="10">
 
@@ -46,8 +72,8 @@
                         <th>
                             {{ trans('cruds.user.fields.roles') }}
                         </th>
-                        <th>
-                            &nbsp;
+                        <th style="text-align:center;" class="col-sm">
+                            Actions
                         </th>
                     </tr>
                 </thead>
@@ -82,19 +108,19 @@
                             </td>
                             <td>
                                 @foreach($user->roles as $key => $item)
-                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                    <span style="background-color: #741897;" class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
                             </td>
-                            <td>
+                            <td style="display:flex;">
                                 @can('user_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
-                                        {{ trans('global.view') }}
+                                    <a style="margin-right:10px;" href="{{ route('admin.users.show', $user->id) }}">
+                                        <img width=20 height=20 src="{{ url('/icon/viewfile.png') }}">
                                     </a>
                                 @endcan
 
                                 @can('user_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
-                                        {{ trans('global.edit') }}
+                                    <a style="margin-right:10px;" href="{{ route('admin.users.edit', $user->id) }}">
+                                    <img width=20 height=20 src="{{ url('/icon/edit.png') }}">
                                     </a>
                                 @endcan
 
@@ -102,7 +128,7 @@
                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <input style="margin-right:10px;" type="image" width=20 height=20 src="{{ url('/icon/delete.png') }}" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
 

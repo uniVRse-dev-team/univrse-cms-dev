@@ -20,8 +20,14 @@ class CreateUsersTable extends Migration
             $table->boolean('verified')->default(0)->nullable();
             $table->datetime('verified_at')->nullable();
             $table->string('verification_token')->nullable();
+            $table->string('country')->nullable();
+            $table->string('occupation')->nullable();
+            $table->int('age')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->country();
+            $table->occupation();
+            $table->age();
         });
     }
 }

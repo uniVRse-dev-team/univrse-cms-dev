@@ -1,14 +1,79 @@
 @extends('layouts.admin')
 @section('content')
 
+<style>
+    body {
+        background-image: url('/background/Add%20Delegate%20Register%20Cropped.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .title {
+        font-weight: 600;
+        font-size: 48px;
+        text-align: center;
+        color: #72258B;
+    }
+
+    .form-control::placeholder {
+        color:white;
+    }
+    </style>
+    
 <div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.user.title_singular') }}
+    <div class="card-header border-0">
+        <h4 class="title">Registration Form</h4>
     </div>
+
+    <center><img width=200 height=200 src="/icon/user.png">
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data" autocomplete="off">
             @csrf
+
+            <div class="input-group" style="width:50%;">
+                <div class="input-group-prepend"><span class="input-group-text" style="font-size: 24px; padding:15px;;background-color:#8334AB; color:white;"><i class="fas fa fa-user"></i></span></div>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" 
+                style="padding: 30px;background-color:#8334AB; font-size: 24px; color:white; border-radius: 0 5px 5px 0;" 
+                placeholder="{{ trans('cruds.user.fields.name') }}" value="{{ old('name', '') }}" required>
+                @if($errors->has('name'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
+            </div>
+
+            <div class="input-group" style="width:50%;">
+                <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px; padding:15px;;background-color:#8334AB; color:white;"><i class="fas fa fa-envelope"></i></span></div>
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" 
+                style="padding: 30px;background-color:#8334AB; font-size: 24px; color:white; border-radius: 0 5px 5px 0;" 
+                placeholder="{{ trans('cruds.user.fields.email') }}" value="{{ old('email', '') }}" required>
+                @if($errors->has('email'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('email') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
+            </div>
+
+            <div class="input-group" style="width:50%;">
+                <div class="input-group-prepend"><span class="input-group-text" style="font-size: 24px; padding:15px;;background-color:#8334AB; color:white;"><i class="fas fa fa-lock"></i></span></div>
+                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="text" name="password" id="password" 
+                style="padding: 30px;background-color:#8334AB; font-size: 24px; color:white; border-radius: 0 5px 5px 0;" 
+                placeholder="{{ trans('cruds.user.fields.password') }}" value="{{ old('password', '') }}" required>
+                @if($errors->has('password'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('password') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
+            </div>
+
+
+            <!-- Space -->
+<!--
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
@@ -80,12 +145,15 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
+-->
             <div class="form-group">
-            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.users.index') }}"> Return </a>
-                <button class="btn btn-info" style="padding:6px 15px;" type="submit">
+            <button class="btn btn-info" style="padding:6px 15px;" type="submit">
                     {{ trans('global.save') }}
                 </button>
+            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.users.index') }}"> Return </a>
+
             </div>
+          </center>
         </form>
     </div>
 </div>

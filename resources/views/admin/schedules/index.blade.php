@@ -13,14 +13,12 @@
     </div>
 @endcan
 <div class="card">
-    <div class="card-header">
-    <i class="fa-fw fas fa-clock-o c-sidebar-nav-icon"></i>
-        <b>{{ trans('cruds.schedule.title_singular') }} {{ trans('global.list') }}</b>
-    </div>
+
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Schedule">
-            <thead>
+    <h4 style="margin-bottom:20px;">{{ trans('cruds.schedule.title_singular') }} {{ trans('global.listing') }}</h4>
+        <table class=" table table-bordered table-hover ajaxTable datatable datatable-Schedule">
+        <thead style="background: linear-gradient(0deg, rgba(92,15,121,1) 0%, rgba(192,94,233,1) 100%); color: white;" >
                 <tr>
                     <th width="10">
 
@@ -53,7 +51,7 @@
                         {{ trans('cruds.schedule.fields.sch_max_pax') }}
                     </th>
                     <th>
-                        &nbsp;
+                        Actions
                     </th>
                 </tr>
             </thead>

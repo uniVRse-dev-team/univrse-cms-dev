@@ -137,14 +137,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.sponsor.fields.spo_product') }}
-                        </th>
-                        <td>
-                            {{ $sponsor->spo_product }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.sponsor.fields.spo_amount') }}
                         </th>
                         <td>
