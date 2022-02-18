@@ -25,6 +25,7 @@
                 <button class="btn btn-info" style="padding:6px 15px;" type="submit">
                     {{ trans('global.save') }}
                 </button>
+                <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.permissions.index') }}"> Return </a>
             </div>
         </form>
     </div>

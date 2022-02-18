@@ -1,47 +1,79 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.user.title_singular') }}
+<style>
+    body {
+        background-image: url('/background/Add%20Delegate%20Register%20Cropped.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .p_button {
+		background-color: #72258B;
+		color: white;
+	}
+	
+	.p_button:hover {
+		background-color: #3F145C;
+		color: white;
+	}
+
+    .title {
+        font-weight: 600;
+        font-size: 48px;
+        text-align: center;
+        color: #72258B;
+    }
+
+    .form-control::placeholder {
+        color:white;
+    }
+
+    .input-group {
+		margin: 30px 20px;
+	}
+
+    .imgcenter {
+        display: block;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+</style>
+
+<div style="display:flex;">
+<div style="flex:50%;"><br><br><br><br><br><br><br><br><br><br><br>
+<img class="imgcenter" src="/icon/univrse_logo_white-01.png"></div>
+<div class="card" style="padding: 20px 75px;">
+    <div class="card-header border-0">
+        <h4 class="title">Registration Form</h4>
     </div>
+
+    <center><img width=200 height=200 src="/icon/user.png">
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data" autocomplete="off">
             @csrf
-            <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                @if($errors->has('name'))
+            <div class="input-group" style="width:50%;">
+                <div class="input-group-prepend"><span class="input-group-text" style="font-size: 12px; padding:15px;;background-color:#8334AB; color:white;"><i class="fas fa fa-user"></i></span></div>
+                <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username" id="username" 
+                style="padding: 21px;background-color:#8334AB; font-size: 12px; color:white; border-radius: 0 5px 5px 0;" 
+                placeholder="{{ trans('cruds.user.fields.username') }}" value="{{ old('username', '') }}" required>
+                @if($errors->has('username'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('username') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.user.fields.username_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}" required>
-                @if($errors->has('email'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="avatar_url">{{ trans('cruds.user.fields.avatar_url') }}</label>
-                <input class="form-control {{ $errors->has('avatar_url') ? 'is-invalid' : '' }}" type="text" name="avatar_url" id="avatar_url" value="{{ old('avatar_url') }}">
-                @if($errors->has('avatar_url'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('avatar_url') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.avatar_url_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
-                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
+
+            <div class="input-group" style="width:50%;">
+                <div class="input-group-prepend"><span class="input-group-text" style="font-size: 12px; padding:15px;;background-color:#8334AB; color:white;"><i class="fas fa fa-lock"></i></span></div>
+                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" 
+                style="padding: 21px;background-color:#8334AB; font-size: 12px; color:white; border-radius: 0 5px 5px 0;" 
+                placeholder="{{ trans('cruds.user.fields.password') }}" value="{{ old('password', '') }}" required>
                 @if($errors->has('password'))
                     <div class="invalid-feedback">
                         {{ $errors->first('password') }}
@@ -49,45 +81,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
             </div>
+
             <div class="form-group">
-                <div class="form-check {{ $errors->has('approved') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="approved" value="0">
-                    <input class="form-check-input" type="checkbox" name="approved" id="approved" value="1" {{ old('approved', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="approved">{{ trans('cruds.user.fields.approved') }}</label>
-                </div>
-                @if($errors->has('approved'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('approved') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.approved_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
-                    @foreach($roles as $id => $roles)
-                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $roles }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('roles'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('roles') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
-            </div>
-            <div class="form-group">
-            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.users.index') }}"> Return </a>
-                <button class="btn btn-info" style="padding:6px 15px;" type="submit">
-                    {{ trans('global.save') }}
+            <button class="btn p_button" style="padding:6px 15px;" type="submit">
+                    {{ trans('global.register') }}
                 </button>
+            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.users.index') }}"> Return </a>
+
             </div>
+          </center>
         </form>
     </div>
+</div>
 </div>
 
 

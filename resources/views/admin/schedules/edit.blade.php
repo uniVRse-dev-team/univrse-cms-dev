@@ -92,10 +92,11 @@
                 <span class="help-block">{{ trans('cruds.schedule.fields.sch_max_pax_helper') }}</span>
             </div>
             <div class="form-group">
-            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.schedules.index') }}"> Return </a>
-                <button class="btn btn-info" style="padding:6px 15px;" type="submit">
+            <button class="btn btn-info" style="padding:6px 15px;" type="submit">
                     {{ trans('global.save') }}
                 </button>
+            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.schedules.index') }}"> Return </a>
+
             </div>
         </form>
     </div> 

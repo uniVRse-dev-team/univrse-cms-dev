@@ -11,6 +11,17 @@
   .dropdown button:hover, button:focus {
   outline: none;
 }
+
+.p_button {
+        background-color: purple;
+        color: white;
+    }
+
+    .p_button:hover {
+        background-color: blue;
+    }
+    
+
   </style>
 
 <head>
@@ -40,38 +51,33 @@
 <body class="c-app">
     @include('partials.menu')
     <div class="c-wrapper">
-        <header class="c-header c-header-fixed px-3">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-                <i class="fas fa-fw fa-bars"></i>
-            </button>
+        <header class="c-header c-header-fixed">
 
             <div style="display: flex;">
+<!--
             <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
+-->
 
-            <button id="search-button" type="button" class="btn btn-default"><i class="fas fa-search"></i>
+            <button id="search-button" type="button" style="background-color:white;" class="btn btn-default border-0" style=""><i style="color:#83528A;" class="fas fa-search"></i>
             </button>
             <input type="search" class="form-control" style="margin-top: 10px; width:700px;" placeholder="Search...">
             
-            <div style="margin: 20px;">
-            <a href="#"><i class="c-sidebar-nav-icon fas fa-fw fa-bell"></i></a>
-            </div>
 
-            <div style="display: flex;margin: 15px;">
+            <div style="display: flex; margin: 15px;">
             <img width="30" height="30" style="border-radius: 50%;" src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png">
               
             </div>
 
             <div class="dropdown" style="margin-top: 17px;">
-  <button style="color:black; border: none;" class="dropdown-toggle" style="border:none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Admin
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Sign Up</a>
-    <a class="dropdown-item" href="#">Log Out</a>
-  </div>
-</div>
+              <button style="color:black; border: none;" class="dropdown-toggle" style="border:none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+              </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">Log Out</a>
+            </div>
+          </div>
             </div>
             
 
@@ -148,6 +154,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
+      
         $(function() {
   let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
   let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
@@ -187,7 +194,7 @@
     buttons: [
       {
         extend: 'selectAll',
-        className: 'btn-primary',
+        className: 'btn-primary p_button',
         text: selectAllButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -200,7 +207,7 @@
       },
       {
         extend: 'selectNone',
-        className: 'btn-primary',
+        className: 'p_button',
         text: selectNoneButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -208,7 +215,7 @@
       },
       {
         extend: 'copy',
-        className: 'btn-default',
+        className: 'btn-default p_button',
         text: copyButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -216,7 +223,7 @@
       },
       {
         extend: 'csv',
-        className: 'btn-default',
+        className: 'btn-default p_button',
         text: csvButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -224,7 +231,7 @@
       },
       {
         extend: 'excel',
-        className: 'btn-default',
+        className: 'btn-default p_button',
         text: excelButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -232,7 +239,7 @@
       },
       {
         extend: 'pdf',
-        className: 'btn-default',
+        className: 'btn-default p_button',
         text: pdfButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -240,7 +247,7 @@
       },
       {
         extend: 'print',
-        className: 'btn-default',
+        className: 'btn-default p_button',
         text: printButtonTrans,
         exportOptions: {
           columns: ':visible'
@@ -248,7 +255,7 @@
       },
       {
         extend: 'colvis',
-        className: 'btn-default',
+        className: 'btn-default p_button',
         text: colvisButtonTrans,
         exportOptions: {
           columns: ':visible'

@@ -12,6 +12,7 @@ class CreateExhibitorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('exh_register')->unique();
             $table->string('exh_name');
+            $table->string('exh_venue');
             $table->string('exh_adr_1');
             $table->string('exh_adr_2');
             $table->string('exh_postcode');

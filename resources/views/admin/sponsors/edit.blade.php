@@ -157,16 +157,6 @@
                 <span class="help-block">{{ trans('cruds.sponsor.fields.spo_package_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="spo_product">{{ trans('cruds.sponsor.fields.spo_product') }}</label>
-                <input class="form-control {{ $errors->has('spo_product') ? 'is-invalid' : '' }}" type="text" name="spo_product" id="spo_product" value="{{ old('spo_product', $sponsor->spo_product) }}" required>
-                @if($errors->has('spo_product'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('spo_product') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.sponsor.fields.spo_amount_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="spo_amount">{{ trans('cruds.sponsor.fields.spo_amount') }}</label>
                 <input class="form-control {{ $errors->has('spo_amount') ? 'is-invalid' : '' }}" type="text" name="spo_amount" id="spo_amount" value="{{ old('spo_amount', $sponsor->spo_amount) }}" required>
                 @if($errors->has('spo_amount'))
@@ -188,10 +178,11 @@
                 <span class="help-block">{{ trans('cruds.sponsor.fields.spo_logo_helper') }}</span>
             </div>
             <div class="form-group">
-            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.sponsors.index') }}"> Return </a>
-                <button class="btn btn-info" style="padding:6px 15px;" type="submit">
+            <button class="btn btn-info" style="padding:6px 15px;" type="submit">
                     {{ trans('global.save') }}
                 </button>
+            <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.sponsors.index') }}"> Return </a>
+
             </div>
         </form>
     </div>

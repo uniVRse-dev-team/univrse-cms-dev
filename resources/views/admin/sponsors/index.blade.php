@@ -10,14 +10,12 @@
     </div>
 @endcan
 <div class="card">
-    <div class="card-header">
-    <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon"></i>
-        <b>{{ trans('cruds.sponsor.title_singular') }} {{ trans('global.list') }}</b>
-    </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Sponsor">
-            <thead>
+        <h4 style="margin-bottom:20px;">{{ trans('cruds.sponsor.title_singular') }} {{ trans('global.listing') }}</h4>
+
+        <table class=" table table-bordered table-hover ajaxTable datatable datatable-Sponsor">
+        <thead style="background: linear-gradient(0deg, rgba(92,15,121,1) 0%, rgba(192,94,233,1) 100%); color: white;" >
                 <tr>
                     <th width="10">
 
@@ -59,16 +57,13 @@
                         {{ trans('cruds.sponsor.fields.spo_package') }}
                     </th>
                     <th>
-                        {{ trans('cruds.sponsor.fields.spo_product') }}
-                   </th>
-                    <th>
                         {{ trans('cruds.sponsor.fields.spo_amount') }}
                     </th>
                     <th>
                         {{ trans('cruds.sponsor.fields.spo_logo') }}
                     </th>
                     <th>
-                        &nbsp;
+                        Actions
                     </th>
                 </tr>
             </thead>
@@ -135,7 +130,6 @@
 { data: 'spo_pic', name: 'spo_pic' },
 { data: 'spo_mobile', name: 'spo_mobile' },
 { data: 'spo_package', name: 'spo_package'},
-{ data: 'spo_product', name: 'spo_product'},
 { data: 'spo_amount', name: 'spo_amount' },
 { data: 'spo_logo', name: 'spo_logo', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

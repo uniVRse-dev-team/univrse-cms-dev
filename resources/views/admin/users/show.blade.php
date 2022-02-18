@@ -20,64 +20,34 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.name') }}
+                            {{ trans('cruds.user.fields.username') }}
                         </th>
                         <td>
-                            {{ $user->name }}
+                            {{ $user->username }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.email') }}
+                            {{ trans('cruds.user.fields.country') }}
                         </th>
                         <td>
-                        @if($user->email)
-                                <a href="mailto:{{ $user->email }}" target="_blank">
-                                    {{ $user->email }}
-                                </a>
-                            @endif
+                            {{ $user->country }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
+                            {{ trans('cruds.user.fields.occupation') }}
                         </th>
                         <td>
-                            {{ $user->email_verified_at }}
+                            {{ $user->occupation }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.avatar_url') }}
+                            {{ trans('cruds.user.fields.age') }}
                         </th>
                         <td>
-                            {{ $user->avatar_url }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.approved') }}
-                        </th>
-                        <td>
-                            <input type="checkbox" disabled="disabled" {{ $user->approved ? 'checked' : '' }}>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.verified') }}
-                        </th>
-                        <td>
-                            <input type="checkbox" disabled="disabled" {{ $user->verified ? 'checked' : '' }}>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.roles') }}
-                        </th>
-                        <td>
-                            @foreach($user->roles as $key => $roles)
-                                <span class="label label-info">{{ $roles->title }}</span>
-                            @endforeach
+                            {{ $user->age }}
                         </td>
                     </tr>
                 </tbody>

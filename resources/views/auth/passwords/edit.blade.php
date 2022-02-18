@@ -9,7 +9,7 @@
             </div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route("profile.password.updateProfile") }}">
+                <form method="POST" action="{{ route("profile.password.updateProfile") }}" autocomplete="off">
                     @csrf
                     <div class="form-group">
                         <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
@@ -30,7 +30,34 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-danger" type="submit">
+                        <label for="title">{{ trans('cruds.user.fields.country') }}</label>
+                        <input class="form-control {{ $errors->has('country') ? 'is-invalid' : '' }}" type="text" name="country" id="country" value="{{ old('country', auth()->user()->country) }}">
+                        @if($errors->has('country'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('country') }}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <labelnfor="title">{{ trans('cruds.user.fields.occupation') }}</label>
+                        <input class="form-control {{ $errors->has('occupation') ? 'is-invalid' : '' }}" type="text" name="occupation" id="occupation" value="{{ old('occupation', auth()->user()->occupation) }}">
+                        @if($errors->has('occupation'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('occupation') }}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="title">{{ trans('cruds.user.fields.age') }}</label>
+                        <input class="form-control {{ $errors->has('age') ? 'is-invalid' : '' }}" type="text" name="age" id="age" value="{{ old('age', auth()->user()->age) }}">
+                        @if($errors->has('age'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('age') }}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-info" type="submit">
                             {{ trans('global.save') }}
                         </button>
                     </div>
@@ -45,7 +72,7 @@
             </div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route("profile.password.update") }}">
+                <form method="POST" action="{{ route("profile.password.update") }}" autocomplete="off">
                     @csrf
                     <div class="form-group">
                         <label class="required" for="title">New {{ trans('cruds.user.fields.password') }}</label>

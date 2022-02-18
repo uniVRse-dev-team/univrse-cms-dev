@@ -48,6 +48,16 @@
         padding: 20px 0 100px 0;
     }
 
+    .board h2 {
+        font-size: 48px;
+        font-weight: 300;
+        letter-spacing: 3px;
+    }
+
+    .board p {
+        color: white;
+    }
+
 .topnav {
     overflow: hidden;
 }
@@ -81,7 +91,9 @@
 .dropbtn {
   font-size: 16px;
   padding: 4px;
-  border: 1px solid black;
+  border: 2px solid black;
+  color: black;
+  background-color: #FFF;
 }
 
 .dropdown {
@@ -108,7 +120,7 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #3e8e41; color:white;}
 
 </style>
 
@@ -143,14 +155,14 @@
                     <div style="display:flex;">
                 <div class="container">
                         <h4>Avg. Customer</h4>
-                        <h3>{{ $count_sch }}</h3>
+                        <h3>N/A</h3>
                         <canvas id="ovChart1" width="200" height="100"></canvas>
                         <p><span style="color:red;">1.3% <i style="color:red;"class="fas fa-arrow-down"></i></span> than last year</p>
                     </div>
                 
                     <div class="container">
                         <h4>Booth Order Quantity</h4>
-                        <h3>{{ $count_user }}</h3>
+                        <h3>N/A</h3>
                         <canvas id="ovChart2" width="200" height="100"></canvas>
                         <p><span style="color:red;">1.2% <i style="color:red;"class="fas fa-arrow-down"></i></span> than last year</p>
                     </div>
@@ -158,7 +170,7 @@
                     
                     <div class="container">
                         <h4>Unique Purchases</h4>
-                        <h3>{{ $count_spo }}</h3>
+                        <h3>N/A</h3>
                         <canvas id="ovChart3" width="200" height="100"></canvas>
                         <p><span style="color:#3ADD93;">2.1% <i style="color:#3ADD93;"class="fas fa-arrow-up"></i></span> than last year</p>
                     </div>
@@ -182,11 +194,6 @@
 
                 <div class="card-body">
                     <h3>Customer Growth</h3>
-                <!--
-                <div class="card-text">
-                    <p>Work in progress</p>
-                </div>
-                -->
                 <div class="card-img-bottom">
                      <canvas id="myChart1" width="400" height="225"></canvas>
                 </div>
@@ -196,7 +203,7 @@
                     <h3>Sales Report</h3>
                 </div>
                 <div class="card-img-bottom">
-                    <canvas id="salesChart" width="400" height="170"></canvas>
+                    <canvas id="salesChart" width="400" height="181"></canvas>
                 </div>
 
                 </div>
@@ -218,7 +225,7 @@
                     <div class="board">
                         <h3><b style="color:white;">Visitors this year</b></h3>
 
-                        <h4>212,521</h4>
+                        <h2>212,521</h2>
 
                         <canvas id="visitorChart" width="60" height="30"></canvas>
                         <p><span style="color:#3ADD93;">1.8% <i style="color:#3ADD93;"class="fas fa-arrow-up"></i></span> than last year</p>
@@ -229,8 +236,10 @@
                         <h4>Sales Breakdown By Events</h4>
 
                         <canvas id="salesbreakdown" width="100" height="100"></canvas>
+                        <!--
                         <hr>
                         <a href="#">More Insights ></a>
+                    -->
                     </div>
                     </center>
                 </div>
@@ -380,50 +389,27 @@ var ovChart3 = new Chart("ovChart3", {
              }
     });
 
-    var visitorchart = new Chart("visitorChart", {
+    var visitorChart = new Chart("visitorChart", {
         type: "line",
         data: {
-            labels: ['A','B','C'],
+            labels: ['A','B','C','D','E'],
             datasets: [{
-                data:[50,37,43],
-                backgroundColor: ['background: rgb(55,179,145)',
-'background: linear-gradient(180deg, rgba(55,179,145,1) 0%, rgba(134,141,169,1) 25%, rgba(165,58,152,1) 50%)'],
-                borderColor: '#51BEA9'
+                data: [2,3,6,8,1],
+                backgroundColor: "#58D672",
+                borderColor: "#58D672"
             }]
         },
         options: {
-            scales: {
-                x: {
-                    ticks: {
-                        display: false
-                    }
-                },
-                xAxes: [{
-                    gridLines: {
-                        display: false
-                    }
-                }],
-                y: {
-                    beginAtZero :true,
-                    ticks: {
-                        display: false
-                    },
-                    grid: {
-                        drawTicks: true,
-                        drawOnChartArea: false
-                    }
-                },
-                yAxes: [{
-                    gridLines: {
-                        display: false
-                    }
-                }]
+            legend: {
+                display: false
             },
-            plugins: {
-                legend: {
-                    display: false
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
                 }
-            },
+            }
         }
     });
 

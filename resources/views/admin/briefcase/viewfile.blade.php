@@ -11,7 +11,7 @@
 
                 <div class="card-body">
                 <div class="card-text">
-                    <img width="200" height="200" src="{{ asset('storage/'. $files) }}"> 
+                    <img width="200" height="200" src="/media/<?php echo $files;?>"> 
                 </div>
                 </div>
             </div>

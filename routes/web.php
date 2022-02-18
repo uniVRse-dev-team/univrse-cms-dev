@@ -1,9 +1,10 @@
 <?php
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/home');
 Route::get('/home', function () {
     if (session('status')) {
-        return redirect()->route('admin.home')->with('status', session('status'));
+        $stat = "logged in.";
+        return redirect()->route('admin.home')->with('status', session('status'), compact($stat));
     }
 
     return redirect()->route('admin.home');
@@ -11,7 +12,6 @@ Route::get('/home', function () {
 
 Route::get('/dashboard', 'HomeController@dashboard')->name('home.dashboard');
 
-Route::get('userVerification/{token}', 'UserVerificationController@approve')->name('userVerification');
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
@@ -24,8 +24,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
     Route::resource('roles', 'RolesController');
 
+    // Booth
+    Route::delete('booths/destroy', 'BoothController@massDestroy')->name('booths.massDestroy');
+    Route::resource('booths', 'BoothController');
+
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::get('users/create_exh', 'UsersController@createExh')->name('users.create_exh');
+    Route::get('users/create_admin', 'UsersController@createAdmin')->name('users.create_admin');
     Route::resource('users', 'UsersController');
 
     // Audit Logs
@@ -65,6 +71,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('briefcase/viewpdf/{id}', 'BriefcaseController@viewPdfFile')->name('briefcase.viewpdffile');
     Route::get('briefcase/download/{id}', 'BriefcaseController@download')->name('briefcase.download');
     Route::get('briefcase/remove/{id}', 'BriefcaseController@remove')->name('briefcase.remove');
+    Route::delete('briefcase/destroy', 'BriefcaseController@massDestroy')->name('briefcase.massDestroy');
+
+    // User Briefcase
+    Route::get('userbriefcase/view', 'UserBriefcaseController@index')->name('userbriefcase.index');
+    Route::get('userbriefcase/create', 'UserBriefcaseController@create')->name('userbriefcase.create');
+    Route::post('userbriefcase/add', 'UserBriefcaseController@add')->name('userbriefcase.add');
+    Route::delete('userbriefcase/destroy', 'UserBriefcaseController@massDestroy')->name('userbriefcase.massDestroy');
 
     // Schedule
     Route::get('schedules/speakers', 'ScheduleController@manageSpeaker')->name('schedules.manageSpeaker');
