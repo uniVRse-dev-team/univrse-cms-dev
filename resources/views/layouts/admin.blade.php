@@ -207,7 +207,7 @@
       },
       {
         extend: 'selectNone',
-        className: 'btn-primary p_button',
+        className: 'p_button',
         text: selectNoneButtonTrans,
         exportOptions: {
           columns: ':visible'

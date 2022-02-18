@@ -1,9 +1,10 @@
 <?php
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/home');
 Route::get('/home', function () {
     if (session('status')) {
-        return redirect()->route('admin.home')->with('status', session('status'));
+        $stat = "logged in.";
+        return redirect()->route('admin.home')->with('status', session('status'), compact($stat));
     }
 
     return redirect()->route('admin.home');
@@ -23,8 +24,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
     Route::resource('roles', 'RolesController');
 
+    // Booth
+    Route::delete('booths/destroy', 'BoothController@massDestroy')->name('booths.massDestroy');
+    Route::resource('booths', 'BoothController');
+
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::get('users/create_exh', 'UsersController@createExh')->name('users.create_exh');
+    Route::get('users/create_admin', 'UsersController@createAdmin')->name('users.create_admin');
     Route::resource('users', 'UsersController');
 
     // Audit Logs

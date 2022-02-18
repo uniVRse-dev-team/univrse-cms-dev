@@ -1,0 +1,176 @@
+*{
+    box-sizing: border-box;
+    font-family: arial;
+  }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active {
+      -webkit-text-fill-color: #fff;
+      -webkit-box-shadow: 0 0 0 30px #8334AB inset !important;
+  }
+  
+  body {
+    height: 100%;
+    background: url('/background/background.png') no-repeat center center fixed;  
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  
+  .wrapper {
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    margin: 10px auto;
+    padding: 5px 30px;
+  }
+  
+  .imgcenter {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width:40%;
+      height:30%;
+  }
+  
+  .imgcenter img {
+      max-width: 100%;
+      max-height: 100%;
+  }
+  
+  .desc {
+      text-align: center;
+      font-size: 18px;
+      margin: 30px 25%;
+      color: #fff;
+  }
+  
+  .wrapper .title{
+      font-weight: 900;
+      font-size: 30px;
+      text-align: center;
+      color: #72258B;
+  }
+  
+  .error {
+      text-align:center;
+      border: 1px solid #AE0008;
+      background-color: #FF656C;
+      color: white;
+  }
+      
+  .success {
+      text-align: center;
+      border: 1px solid #155C18;
+      background-color: #52BD4E;
+      color: white;
+  }
+  
+  .wrapper .form{
+    width: 100%;
+  }
+  
+  .wrapper .form .inputfield .input-icon {
+      font-size: 18px; 
+      padding:15px;
+      background-color:#8334AB; 
+      color:white;
+  }
+  
+  .wrapper .form .inputfield{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center
+  }
+  
+  .wrapper .form .inputfield span{
+     color: #757575;
+     font-size: 14px;
+     border: 1px solid #d5dbd9; 
+     border-radius: 3px 0 0 3px;
+  }
+  
+  ::placeholder {
+    color: white;
+  }
+  
+  .wrapper .form .inputfield .input{
+    width: 100%;
+    background-color: #8334AB;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 0 3px 3px 0;
+    color: white;
+  }
+  
+  .wrapper .form .inputfield .input:focus,
+  .wrapper .form .inputfield .textarea:focus {
+    border: 1px solid #2D0E43;
+  }
+  
+  .wrapper .form .inputfield .check{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .wrapper .form .inputfield .btn{
+    width: 100%;
+    padding: 8px;
+    background: linear-gradient(0deg, rgba(165,35,135,1) 0%, rgba(125,67,138,1) 100%);
+    margin-top:10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .wrapper .form .inputfield .btn:hover{
+    background: linear-gradient(0deg, rgba(108,28,94,1) 0%, rgba(54,4,62,1) 100%);
+  }
+  
+  @media only screen and (max-width:900px){
+      .imgcenter {
+        width: 60%;
+       }
+  }
+  
+  @media only screen and (max-width:640px) {
+    
+    .desc {
+        font-size: 16px;
+        margin: 30px 7%;
+     }
+  
+    .wrapper .title {
+        font-size: 25px;
+    }
+     
+     .wrapper {
+        width: 80%;
+     }
+    
+    .wrapper .form .inputfield{
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 2px;
+    }
+    
+    .wrapper .form .inputfield .input{
+        font-size:14px;
+    }
+    
+    .wrapper .form .inputfield span{
+      display: none;
+      margin-bottom: 5px;
+    }
+  }

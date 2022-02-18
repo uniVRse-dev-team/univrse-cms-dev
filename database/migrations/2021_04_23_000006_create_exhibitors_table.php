@@ -10,23 +10,11 @@ class CreateExhibitorsTable extends Migration
     {
         Schema::create('exhibitors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('exh_register')->unique();
-            $table->string('exh_name');
-            $table->string('exh_venue');
-            $table->string('exh_adr_1');
-            $table->string('exh_adr_2');
-            $table->string('exh_postcode');
-            $table->string('exh_city');
-            $table->string('exh_state');
-            $table->string('exh_country');
+            $table->string('exh_fname');
+            $table->string('exh_lname');
             $table->string('exh_email');
-            $table->string('exh_pic');
-            $table->string('exh_position');
-            $table->string('exh_office')->nullable();
-            $table->string('exh_mobile');
-            $table->string('exh_template');
-            $table->string('exh_color1');
-            $table->string('exh_color2');
+            $table->string('exh_contact_no');
+            $table->string('exh_jobposition');
             $table->timestamps();
             $table->softDeletes();
         });

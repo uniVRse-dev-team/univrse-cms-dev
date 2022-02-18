@@ -3,8 +3,7 @@
 
 <style>
     body {
-        background-image: url('/background/Add%20Delegate%20Register%20Cropped.jpg');
-        background-position: center;
+        background-image: url('/background/Add%20Admin%20Background.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -27,7 +26,7 @@
     }
 
     .form-control::placeholder {
-        color:white;
+        color: white;
     }
 
     .input-group {
@@ -44,14 +43,15 @@
 </style>
 
 <div style="display:flex;">
-<div style="flex:50%;"><br><br><br><br><br><br><br><br><br><br><br>
-<img class="imgcenter" src="/icon/univrse_logo_white-01.png"></div>
+<div style="flex:50%;"><br><br><br><br><br><br><br><br>
+<img class="imgcenter" src="/icon/UNIVRSE_LOGO2021_COLOR-1-1024x284.png">
+<img class="imgcenter" src="/icon/Login-amico.png"></div>
 <div class="card" style="padding: 20px 75px;">
     <div class="card-header border-0">
-        <h4 class="title">Registration Form</h4>
+        <h4 class="title">Add New Admin</h4>
     </div>
 
-    <center><img width=200 height=200 src="/icon/user.png">
+    <center><img width=200 height=200 src="/icon/invite.png">
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data" autocomplete="off">
@@ -83,6 +83,7 @@
             </div>
 
             <div class="form-group">
+            <button class="btn p_button" style="padding:6px 15px;" type="submit">
                     {{ trans('global.register') }}
                 </button>
             <a class="btn btn-danger" style="padding:6px 15px;" href="{{ route('admin.users.index') }}"> Return </a>

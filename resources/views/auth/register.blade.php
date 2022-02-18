@@ -19,24 +19,10 @@
                                 <i class="fa fa-user fa-fw"></i>
                             </span>
                         </div>
-                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus placeholder="{{ trans('global.user_name') }}" value="{{ old('name', null) }}">
-                        @if($errors->has('name'))
+                        <input type="text" name="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" required autofocus placeholder="{{ trans('global.user_username') }}" value="{{ old('username', null) }}">
+                        @if($errors->has('username'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fa fa-envelope fa-fw"></i>
-                            </span>
-                        </div>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
-                        @if($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ $errors->first('username') }}
                             </div>
                         @endif
                     </div>
@@ -69,7 +55,7 @@
                     </button>
                     <br>
                     <center>
-                    <a href="{{ route('login') }}">Return to Login</a>
+                        <a href="{{ route('login') }}">Return to Login</a>
                     </center>
                 </form>
 

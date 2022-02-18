@@ -60,12 +60,12 @@ class UsersApiController extends Controller
 
     public function loginUser(Request $request) {
         $fields = $request->validate([
-            'email' => 'required|string',
+            'username' => 'required|string',
             'password' => 'required|string'
         ]);
 
-        // Check email
-        $user = User::where('email', $fields['email'])->first();
+        // Check username
+        $user = User::where('username', $fields['username'])->first();
 
         // Check password
         if(!$user || !Hash::check($fields['password'], $user->password)) {
@@ -86,14 +86,12 @@ class UsersApiController extends Controller
 
     public function registerUser(Request $request){
         $fields = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|unique:users,email',
+            'username' => 'required|string|unique:users',
             'password' => 'required|string|confirmed'
         ]);
 
         $user = User::create([
-            'name' => $fields['name'],
-            'email' => $fields['email'],
+            'username' => $fields['username'],
             'password' => bcrypt($fields['password'])
         ]);
 

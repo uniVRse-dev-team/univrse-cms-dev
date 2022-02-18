@@ -26,49 +26,22 @@
                         {{ trans('cruds.delegate.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.delegate.fields.del_name') }}
+                        {{ trans('cruds.delegate.fields.del_fname') }}
                     </th>
                     <th>
-                        {{ trans('cruds.delegate.fields.del_position') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_office') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_mobile') }}
+                        {{ trans('cruds.delegate.fields.del_lname') }}
                     </th>
                     <th>
                         {{ trans('cruds.delegate.fields.del_email') }}
                     </th>
                     <th>
-                        {{ trans('cruds.delegate.fields.del_adr_1') }}
+                        {{ trans('cruds.delegate.fields.del_contact_no') }}
                     </th>
                     <th>
-                        {{ trans('cruds.delegate.fields.del_adr_2') }}
+                        {{ trans('cruds.delegate.fields.del_companyname') }}
                     </th>
                     <th>
-                        {{ trans('cruds.delegate.fields.del_postcode') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_city') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_state') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_country') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_speaker') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_twitter') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_linkedin') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.delegate.fields.del_facebook') }}
+                        {{ trans('cruds.delegate.fields.del_jobposition') }}
                     </th>
                     <th>
                         &nbsp;
